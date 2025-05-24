@@ -1,0 +1,19 @@
+name: Livecheck Homebrew tap and bump it
+
+on:
+  schedule:
+    # every day at midnight UTC
+    - cron:  '0 0 * * *'
+
+jobs:
+  update-tap:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update Homebrew formulae
+        uses: dawidd6/action-homebrew-bump-formula@v4
+        with:
+          # Requires personal access token
+          token: "${{ secrets.TOKEN }}"
+          tap: kimminss0/curl-openssl-quic
+          force: false
+          livecheck: true
