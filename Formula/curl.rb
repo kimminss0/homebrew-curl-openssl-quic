@@ -4,7 +4,6 @@ class Curl < Formula
   # Don't forget to update both instances of the version in the GitHub mirror URL.
   # `url` goes below this comment when the `stable` block is removed.
   url "https://curl.se/download/curl-8.13.0.tar.bz2"
-  mirror "https://github.com/curl/curl/releases/download/curl-8_13_0/curl-8.13.0.tar.bz2"
   mirror "http://fresh-center.net/linux/www/curl-8.13.0.tar.bz2"
   mirror "http://fresh-center.net/linux/www/legacy/curl-8.13.0.tar.bz2"
   sha256 "e0d20499260760f9865cb6308928223f4e5128910310c025112f592a168e1473"
@@ -43,12 +42,6 @@ class Curl < Formula
   end
 
   def install
-    tag_name = "curl-#{version.to_s.tr(".", "_")}"
-    if build.stable? && stable.mirrors.grep(/github\.com/).first.exclude?(tag_name)
-      odie "Tag name #{tag_name} is not found in the GitHub mirror URL! " \
-           "Please make sure the URL is correct."
-    end
-
     openssl = Formula["openssl@3"]
     if openssl.version < Version.new("3.5.0")
       odie "openssl@3 >= 3.5.0 is required! " \
