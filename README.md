@@ -1,5 +1,8 @@
 # Homebrew formula for curl with HTTP3 support
 
+> [!IMPORTANT]
+> As of curl 8.15.0, the official Homebrew formula supports HTTP/3; consequently, this repo is no longer maintained.
+
 This package provides curl built with nghttp3 and OpenSSL's QUIC support in Homebrew.
 
 ```
